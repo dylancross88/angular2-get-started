@@ -1,0 +1,26 @@
+<section *ngIf="person">
+  <h2>You selected:  {{person.name}}</h2>
+  <h3>Description</h3>
+  <p>
+     {{person.name}} weighs {{person.weight}} and is {{person.height}} tall.
+  </p>
+</section>
+<section>
+  <form class="form-horizontal" (ngSubmit)="savePersonDetails()" [formGroup]="personForm">
+    <field-wrapper labelText="Name" [control]="personForm.controls.name">
+      <input class="form-control" type="text" formControlName="name"
+             [(ngModel)]="person.name">
+    </field-wrapper>
+    <field-wrapper labelText="Weight" [control]="personForm.controls.weight">
+      <input class="form-control" type="number" formControlName="weight"
+             [(ngModel)]="person.weight">
+    </field-wrapper>
+    <field-wrapper labelText="Height" [control]="personForm.controls.height">
+      <input class="form-control" type="number" formControlName="height"
+             [(ngModel)]="person.height">
+    </field-wrapper>
+    <button class="btn btn-lg" type="submit" [disabled]="personForm.invalid">Save</button>
+  </form>
+</section>
+
+<button (click)="gotoPeoplesList()">Back to peoples list</button>

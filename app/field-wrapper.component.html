@@ -1,0 +1,14 @@
+<div class="form-group has-feedback"
+     [ngClass]="{'has-error': control.errors, 'has-success': !control.errors && control.dirty}">
+  <label for="name" class="col-sm-2 control-label">{{labelText}}: </label>
+  <div class="col-md-10">
+    <ng-content></ng-content>
+    <span *ngIf="control.valid && control.dirty"
+          class="glyphicon glyphicon-ok form-control-feedback"></span>
+    <span *ngIf="control.invalid && control.dirty"
+          class="glyphicon glyphicon-remove form-control-feedback"></span>
+    <span *ngIf="errorMessage" class="help-block">
+      {{errorMessage}}
+    </span>
+  </div>
+</div>
